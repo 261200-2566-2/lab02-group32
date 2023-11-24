@@ -104,15 +104,15 @@ public class AirPurifier {
         System.out.printf("Fan Speed: %d.\n", this.fanSpeed);
     }
 
-    //Classs Variables
-    static String mostPopularModel;
-    static int modelCount;
-    static String madeIn;
-
-    //Class Methods
-    static void calMostPopularMode(){}
-    static void showModelCount(){}
-    static void thisModeCanBoughtIn(){}
+//    //Classs Variables
+//    static String mostPopularModel;
+//    static int modelCount;
+//    static String madeIn;
+//
+//    //Class Methods
+//    static void calMostPopularMode(){}
+//    static void showModelCount(){}
+//    static void thisModeCanBoughtIn(){}
 
     public static void main(String[] args){
         AirPurifier A1 = new AirPurifier("P-01");
