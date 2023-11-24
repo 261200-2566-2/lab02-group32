@@ -100,6 +100,7 @@ public class AirPurifier {
         }
         System.out.printf("Set %s %s to %s Mode.\n",model,serialNo,mode);
     }
+
     void showFanSpeed(){
         System.out.printf("Fan Speed: %d.\n", this.fanSpeed);
     }
