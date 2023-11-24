@@ -35,7 +35,7 @@ public class AirPurifier {
     }
 
     void showMode(){
-        System.out.printf("%s %s urrent Mode: %s\n",model,serialNo,mode);
+        System.out.printf("%s %s Current Mode: %s\n",model,serialNo,mode);
     }
 
     void showAQI(int pm25){
