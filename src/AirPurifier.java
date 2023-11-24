@@ -19,14 +19,14 @@ public class AirPurifier {
 
     //Instance Methods
     void turnOn(int pm25){
-        if(this.mode == "OFF"){
+        if(this.mode.equals("OFF")){
             this.power = true;
             autoMode(pm25);
             System.out.printf("Turn %s %s on\n", model, serialNo);
         }
     }
     void turnOff(){
-        if(this.mode != "OFF"){
+        if(this.mode.equals("OFF")){
             this.power = false;
             this.mode = "OFF";
             fanSpeed = 0;
@@ -41,7 +41,7 @@ public class AirPurifier {
     void showAQI(int pm25){
         String AQIcat ="";
         if(this.power){
-            if(pm25 <= 50) AQIcat = "GOOD";
+            if(pm25 < 50) AQIcat = "GOOD";
             else if (pm25 >= 51 && pm25 <= 100) AQIcat = "MODERATE";
             else if (pm25 >= 101 && pm25 <= 150) AQIcat = "UNHEALTHY FOR SENSITIVE GROUPS";
             else if (pm25 >= 151 && pm25 <= 200) AQIcat = "UNHEALTHY";
@@ -53,7 +53,7 @@ public class AirPurifier {
         }
     }
 
-    String autoMode(int pm25){
+    void autoMode(int pm25){
         if(pm25 < 50) this.fanSpeed = 1;
         else if (pm25 > 51 && pm25 < 100) this.fanSpeed = 2;
         else if (pm25 > 101 && pm25 < 150) this.fanSpeed = 3;
@@ -61,17 +61,17 @@ public class AirPurifier {
         else if (pm25 >201 && pm25 < 300) this.fanSpeed = 5;
         else if (pm25 < 300) this.fanSpeed= 0;
         this.mode = "AUTO";
-        return this.mode;
+
     }
 
-    String powerfulMode(){
+    void powerfulMode(){
         this.fanSpeed = 6;
         this.mode = "POWERFUL";
-        return this.mode;
+
     }
 
-    String sleepMode(int pm25){
-        if(pm25 <= 150) {
+    void sleepMode(int pm25){
+        if(pm25 < 150) {
             this.fanSpeed = 1;
             this.mode = "SLEEP";
         }
@@ -83,7 +83,7 @@ public class AirPurifier {
         else if (pm25 >= 201) {
             System.out.println("Cannot set to SLEEP due to bad quality air.");
         }
-        return this.mode;
+
     }
 
     void setMode(int pm25,int nextMode){
@@ -104,23 +104,13 @@ public class AirPurifier {
         System.out.printf("Fan Speed: %d.\n", this.fanSpeed);
     }
 
-//    //Classs Variables
-//    static String mostPopularModel;
-//    static int modelCount;
-//    static String madeIn;
-//
-//    //Class Methods
-//    static void calMostPopularMode(){}
-//    static void showModelCount(){}
-//    static void thisModeCanBoughtIn(){}
-
     public static void main(String[] args){
         AirPurifier A1 = new AirPurifier("P-01");
         int pm25 = 100;
 
         A1.turnOn(pm25);
         A1.showMode();
-        A1.setMode(pm25,2);
+        A1.setMode(pm25,1);
         A1.showMode();
         A1.showAQI(pm25);
         A1.turnOff();
